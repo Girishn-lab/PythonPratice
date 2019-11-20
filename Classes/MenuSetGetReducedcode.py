@@ -1,5 +1,8 @@
 class ItemAbsent(Exception):
-    pass
+    def __init__(self, item):
+        f = open("log.txt","a+")
+        f.write("The item " + item + " not present in the list.\n")
+        f.close()
 
 
 class Menu:
@@ -11,16 +14,11 @@ class Menu:
         self.menu_items[item] = price
 
     def set_item(self, item, price):
-        f = open("log.txt", "a+")
-        try:
-            if item in self.menu_items:
-                self.menu_items[item] = price
-            else:
-                raise ItemAbsent
-        except ItemAbsent:
-            f.write("The item " + item + " not present in the list.\n")
-        finally:
-            f.close()
+        if item in self.menu_items:
+            self.menu_items[item] = price
+        else:
+            raise ItemAbsent(item)
+
 
     def show(self):
         print(self.menu_items)

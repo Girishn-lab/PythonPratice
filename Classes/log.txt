@@ -1,10 +1,2 @@
-The item upma not present in the list.
+
 The item dosa not present in the list.
-The item poori not present in the list.
-The item upma not present in the list.
-The item dosa not present in the list.
-The item poori not present in the list.
-The item upma not present in the list.
-The item dosa not present in the list.
-The item poori not present in the list.
-The item upma not present in the list.
