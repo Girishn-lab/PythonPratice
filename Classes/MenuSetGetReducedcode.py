@@ -1,6 +1,6 @@
 class ItemAbsent(Exception):
     def __init__(self, item):
-        f = open("log.txt","a+")
+        f = open("log.txt", "a+")
         f.write("The item " + item + " not present in the list.\n")
         f.close()
 
@@ -9,6 +9,15 @@ class Menu:
 
     def __init__(self):
         self.menu_items = dict()
+
+    def __setitem__(self, key, value):
+        self.menu_items[key] = value
+
+    def __delitem__(self, key):
+        del self.menu_items[key]
+
+    def __iter__(self):
+        return self.menu_items
 
     def add_item(self, item, price):
         self.menu_items[item] = price
@@ -19,25 +28,43 @@ class Menu:
         else:
             raise ItemAbsent(item)
 
-
     def show(self):
         print(self.menu_items)
 
 
 m = Menu()
+m["pulav"] = 40
+
+# del m["pulav"]
+
 
 m.add_item("idly", 20)
 m.add_item("vada", 30)
 m.show()
 
-m.set_item("idly", 25)
-m.show()
+try:
+    m.set_item("idly", 25)
+    m.show()
+except ItemAbsent:
+    pass
 
-m.set_item("dosa", 25)
-m.show()
+for i in m.__iter__():
+    print(i)
 
-m.set_item("poori", 25)
-m.show()
+try:
+    m.set_item("dosa", 25)
+    m.show()
+except ItemAbsent:
+    pass
 
-m.set_item("upma", 25)
-m.show()
+try:
+    m.set_item("poori", 25)
+    m.show()
+except ItemAbsent:
+    pass
+
+try:
+    m.set_item("upma", 25)
+    m.show()
+except ItemAbsent:
+    pass
