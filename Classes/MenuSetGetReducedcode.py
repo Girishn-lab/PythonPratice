@@ -17,7 +17,10 @@ class Menu:
         del self.menu_items[key]
 
     def __iter__(self):
-        return self.menu_items
+        return iter(self.menu_items)
+
+    def __contains__(self, item):
+        return item in self.menu_items
 
     def add_item(self, item, price):
         self.menu_items[item] = price
@@ -48,8 +51,11 @@ try:
 except ItemAbsent:
     pass
 
-for i in m.__iter__():
+for i in m:
     print(i)
+
+print("temp" in m)
+
 
 try:
     m.set_item("dosa", 25)
