@@ -52,7 +52,7 @@ def main():
 
     # Took the last commit, Can do it automatically also but keeping it open
 
-    sha = '4751b4597c9f99b2047d163f30eeebc5a57e9e7a'
+    sha = '45ece92989305adebe94ff76e7466a906bf3220c'
 
     get_all_commits_count(owner, repo, sha)
 
